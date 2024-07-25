@@ -12,6 +12,7 @@
     "InputPlayerEntityMixin",
     "MinecraftMixin",
     "NaturalSpawnerMixin",
+    "PigEntityMixin",
     "PlayerEntityMixin",
     "PlayerInventoryMixin",
     "StatusEffectMixin",
