@@ -21,7 +21,7 @@ public abstract class AnimalEntityMixin extends PathAwareEntity {
 		at = @At("HEAD"),
 		cancellable = true
 	)
-	public void isHostile(CallbackInfoReturnable<Boolean> cir) {
+	private void isHostile(CallbackInfoReturnable<Boolean> cir) {
 		cir.setReturnValue(TweakedAdventureConfig.getInstance().animalDespawning());
 	}
 

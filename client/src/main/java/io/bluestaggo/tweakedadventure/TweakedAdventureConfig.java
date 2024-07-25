@@ -21,6 +21,7 @@ public class TweakedAdventureConfig {
 	private boolean animalDespawning = true;
 	private boolean frequentAnimalRespawning = true;
 	private boolean dropPanes = true;
+	private boolean pigmenDropPorkchops = false;
 	private boolean growableSwampTrees = true;
 	private boolean murkySwamps = true;
 	private ExperienceBarType experienceBarType = ExperienceBarType.NONE;
@@ -65,6 +66,10 @@ public class TweakedAdventureConfig {
 		return dropPanes;
 	}
 
+	public boolean pigmenDropPorkchops() {
+		return pigmenDropPorkchops;
+	}
+
 	public boolean murkySwamps() {
 		return murkySwamps;
 	}
@@ -94,7 +99,7 @@ public class TweakedAdventureConfig {
 	public enum TaigaType {
 		@SerializedName("snowless") SNOWLESS,
 		@SerializedName("snowy") SNOWY,
-		@SerializedName("snowy_and_snowless") SNOWY_AND_SLOWLESS
+		@SerializedName("snowyAndSnowless") SNOWY_AND_SLOWLESS
 	}
 
 	static {
