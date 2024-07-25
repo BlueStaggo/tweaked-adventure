@@ -1,0 +1,25 @@
+{
+	"schemaVersion": 1,
+	"id": "tweaked_adventure",
+	"version": "${version}",
+	"name": "Tweaked Adventure",
+	"description": "A few QOL fixes and world gen tweaks for Beta 1.8 - 1.0.0",
+	"authors": [
+		"BlueStaggo"
+	],
+	"contact": {
+		"homepage": "https://example.com/",
+		"sources": "https://github.com/BlueStaggo/staggos-tweaked-adventure"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/tweaked_adventure/icon.png",
+	"environment": "${environment}",
+	"entrypoints": {},
+	"mixins": [
+		"tweaked_adventure.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.21",
+		"minecraft": "1.0.0-beta.8.1"
+	}
+}
