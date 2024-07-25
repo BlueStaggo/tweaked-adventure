@@ -116,6 +116,19 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 		}
 	}
 
+	@ModifyConstant(
+		method = "moveEntityWithVelocity",
+		constant = @Constant(
+			floatValue = 0.05f
+		)
+	)
+	private float moveSprintFlying(float constant) {
+		if (this.isSprinting()) {
+			constant *= 2.5f;
+		}
+		return constant;
+	}
+
 	@Redirect(
 		method = "jump",
 		at = @At(

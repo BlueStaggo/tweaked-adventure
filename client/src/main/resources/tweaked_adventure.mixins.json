@@ -9,6 +9,7 @@
     "DamageSourceMixin",
     "GameGuiMixin",
     "LivingEntityMixin",
+    "InputPlayerEntityMixin",
     "MinecraftMixin",
     "NaturalSpawnerMixin",
     "PlayerEntityMixin",

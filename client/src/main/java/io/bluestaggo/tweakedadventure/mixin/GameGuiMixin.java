@@ -7,6 +7,8 @@ import net.minecraft.client.entity.living.player.InputPlayerEntity;
 import net.minecraft.client.gui.GameGui;
 import net.minecraft.client.gui.GuiElement;
 import net.minecraft.client.render.TextRenderer;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.*;
@@ -85,5 +87,20 @@ public class GameGuiMixin extends GuiElement {
 			constant -= 7;
 		}
 		return constant;
+	}
+
+	@Inject(
+		method = "render",
+		at = @At(
+			value = "CONSTANT",
+			args = "stringValue=Seed: ",
+			shift = At.Shift.AFTER
+		)
+	)
+	private void renderBiome(float tickDelta, boolean screenOpen, int mouseX, int mouseY, CallbackInfo ci) {
+		int playerX = MathHelper.floor(this.minecraft.player.x);
+		int playerZ = MathHelper.floor(this.minecraft.player.z);
+		Biome biome = this.minecraft.world.getBiomeSource().getBiome(playerX, playerZ);
+		this.drawString(this.minecraft.textRenderer, "Biome: " + biome.name, 2, 112, 14737632);
 	}
 }

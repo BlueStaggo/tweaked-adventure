@@ -1,5 +1,6 @@
 package io.bluestaggo.tweakedadventure.mixin;
 
+import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.entity.living.mob.PathAwareEntity;
 import net.minecraft.entity.living.mob.passive.animal.AnimalEntity;
 import net.minecraft.world.World;
@@ -20,6 +21,6 @@ public abstract class AnimalEntityMixin extends PathAwareEntity {
 		cancellable = true
 	)
 	public void isHostile(CallbackInfoReturnable<Boolean> cir) {
-		cir.setReturnValue(true);
+		cir.setReturnValue(TweakedAdventureConfig.getInstance().animalDespawning());
 	}
 }

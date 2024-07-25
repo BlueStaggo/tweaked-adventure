@@ -1,5 +1,6 @@
 package io.bluestaggo.tweakedadventure.mixin;
 
+import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -14,6 +15,9 @@ public abstract class WorldMixin {
 		)
 	)
 	private long spawnAnimalsFrequently(long constant) {
-		return 1L;
+		if (TweakedAdventureConfig.getInstance().frequentAnimalRespawning()) {
+			return 1L;
+		}
+		return constant;
 	}
 }
