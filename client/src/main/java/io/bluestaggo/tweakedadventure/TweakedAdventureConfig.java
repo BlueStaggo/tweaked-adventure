@@ -13,14 +13,14 @@ public class TweakedAdventureConfig {
 
 	private boolean forestsInPlains = false;
 	private boolean hillBiomes = true;
-	private boolean oceansInPlains = false;
-	private boolean releaseLandScale = false;
+	private TaigaType taigaType = TaigaType.SNOWY_AND_SLOWLESS;
 	private boolean releaseArmor = true;
 	private boolean releaseCrits = true;
 	private boolean releaseKnockback = true;
 	private boolean releaseMeleeDamage = true;
 	private boolean dropPanes = true;
 	private boolean growableSwampTrees = false;
+	private boolean murkySwamps = true;
 	private ExperienceBarType experienceBarType = ExperienceBarType.NONE;
 
 	public boolean forestsInPlains() {
@@ -31,12 +31,8 @@ public class TweakedAdventureConfig {
 		return hillBiomes;
 	}
 
-	public boolean oceansInPlains() {
-		return oceansInPlains;
-	}
-
-	public boolean releaseLandScale() {
-		return releaseLandScale;
+	public TaigaType taigaType() {
+		return taigaType;
 	}
 
 	public boolean releaseArmor() {
@@ -59,6 +55,10 @@ public class TweakedAdventureConfig {
 		return dropPanes;
 	}
 
+	public boolean murkySwamps() {
+		return murkySwamps;
+	}
+
 	public boolean growableSwampTrees() {
 		return growableSwampTrees;
 	}
@@ -79,6 +79,12 @@ public class TweakedAdventureConfig {
 		@SerializedName("barOnly") BAR_ONLY,
 		@SerializedName("barAndSkillPoints") BAR_AND_SKILL_POINTS,
 		@SerializedName("barAndLevels") BAR_AND_LEVELS
+	}
+
+	public enum TaigaType {
+		@SerializedName("snowless") SNOWLESS,
+		@SerializedName("snowy") SNOWY,
+		@SerializedName("snowy_and_snowless") SNOWY_AND_SLOWLESS
 	}
 
 	static {

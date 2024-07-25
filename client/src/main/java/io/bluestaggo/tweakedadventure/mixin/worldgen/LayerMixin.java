@@ -15,61 +15,6 @@ public class LayerMixin {
 	@Redirect(
 		method = "init",
 		at = @At(
-			value = "NEW",
-			target = "(JLnet/minecraft/world/biome/layer/Layer;)Lnet/minecraft/world/biome/layer/AddIslandLayer;",
-			ordinal = 3
-		)
-	)
-	private static AddIslandLayer shrinkLand1(long seed, Layer parent) {
-		if (TweakedAdventureConfig.getInstance().releaseLandScale()) {
-			seed = 4L;
-		}
-		return new AddIslandLayer(seed, parent);
-	}
-
-	@Redirect(
-		method = "init",
-		at = @At(
-			value = "NEW",
-			target = "(JLnet/minecraft/world/biome/layer/Layer;)Lnet/minecraft/world/biome/layer/ZoomLayer;",
-			ordinal = 3
-		)
-	)
-	private static ZoomLayer shrinkLand2(long seed, Layer parent) {
-		if (TweakedAdventureConfig.getInstance().releaseLandScale()) {
-			return new ZoomLayer(seed, parent) {
-				@Override
-				public int[] nextValues(int x, int z, int width, int length) {
-					return this.parent.nextValues(x, z, width, length);
-				}
-			};
-		}
-		return new ZoomLayer(seed, parent);
-	}
-
-	@Redirect(
-		method = "init",
-		at = @At(
-			value = "NEW",
-			target = "(JLnet/minecraft/world/biome/layer/Layer;)Lnet/minecraft/world/biome/layer/AddIslandLayer;",
-			ordinal = 4
-		)
-	)
-	private static AddIslandLayer shrinkLand3(long seed, Layer parent) {
-		if (TweakedAdventureConfig.getInstance().releaseLandScale()) {
-			return new AddIslandLayer(seed, parent) {
-				@Override
-				public int[] nextValues(int x, int z, int width, int length) {
-					return this.parent.nextValues(x, z, width, length);
-				}
-			};
-		}
-		return new AddIslandLayer(seed, parent);
-	}
-
-	@Redirect(
-		method = "init",
-		at = @At(
 			value = "INVOKE",
 			target = "Lnet/minecraft/world/biome/layer/ZoomLayer;zoom(JLnet/minecraft/world/biome/layer/Layer;I)Lnet/minecraft/world/biome/layer/Layer;",
 			ordinal = 3

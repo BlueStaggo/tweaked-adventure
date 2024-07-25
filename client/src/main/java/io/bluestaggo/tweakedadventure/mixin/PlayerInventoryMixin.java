@@ -22,17 +22,30 @@ public abstract class PlayerInventoryMixin implements Inventory {
 		cancellable = true
 	)
 	private void releaseArmorProtectionValue(CallbackInfoReturnable<Integer> cir) {
-		if (!TweakedAdventureConfig.getInstance().releaseArmor()) {
+		if (TweakedAdventureConfig.getInstance().releaseArmor()) {
 			return;
 		}
 
-		int protection = 0;
+		int totalProtection = 0;
+		int totalDurability = 0;
+		int totalMaxDamage = 0;
 		for (ItemStack armor : this.armorSlots) {
 			if (armor != null && armor.getItem() instanceof ArmorItem) {
-				protection += ((ArmorItem) armor.getItem()).protection;
+				int maxDamage = armor.getMaxDamage();
+				int damage = armor.getDamage();
+				int durability = maxDamage - damage;
+				totalDurability += durability;
+				totalMaxDamage += maxDamage;
+				int protection = ((ArmorItem) armor.getItem()).protection;
+				totalProtection += protection;
 			}
 		}
-		cir.setReturnValue(protection);
+
+		if(totalMaxDamage == 0) {
+			cir.setReturnValue(0);
+		} else {
+			cir.setReturnValue((totalProtection - 1) * totalDurability / totalMaxDamage + 1);
+		}
 	}
 
 	@ModifyVariable(

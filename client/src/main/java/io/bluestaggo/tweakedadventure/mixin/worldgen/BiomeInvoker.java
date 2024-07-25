@@ -2,6 +2,7 @@ package io.bluestaggo.tweakedadventure.mixin.worldgen;
 
 import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.gen.Invoker;
 
 @SuppressWarnings("UnusedReturnValue")
@@ -12,4 +13,5 @@ public interface BiomeInvoker {
 	@Invoker("setTemperatureAndDownfall") Biome invokeSetTemperatureAndDownfall(float temperature, float downfall);
 	@Invoker("setHeight") Biome invokeSetHeight(float baseHeight, float heightVariation);
 	@Invoker("disableRain") Biome invokeDisableRain();
+	@Accessor("snowy") void setSnowy(boolean snowy);
 }

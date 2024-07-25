@@ -28,6 +28,10 @@ public class AddHillsLayer extends Layer {
 						outputBiome = TweakedAdventureBiomes.FOREST_HILLS.id;
 					} else if (inputBiome == Biome.TAIGA.id) {
 						outputBiome = TweakedAdventureBiomes.TAIGA_HILLS.id;
+					} else if (inputBiome == TweakedAdventureBiomes.SNOWY_TAIGA.id) {
+						outputBiome = TweakedAdventureBiomes.SNOWY_TAIGA_HILLS.id;
+					} else if (inputBiome == Biome.ICE_PLAINS.id) {
+						outputBiome = Biome.ICE_MOUNTAINS.id;
 					} else if (inputBiome == Biome.PLAINS.id && TweakedAdventureConfig.getInstance().forestsInPlains()) {
 						outputBiome = Biome.FOREST.id;
 					}
