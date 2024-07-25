@@ -15,6 +15,7 @@
     "PlayerInventoryMixin",
     "StatusEffectMixin",
     "WorldMixin",
+    "ZombiePigmanEntityMixin",
     "block.BlockMixin",
     "block.BookshelfBlockMixin",
     "block.PaneBlockMixin",
