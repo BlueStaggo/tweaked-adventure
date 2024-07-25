@@ -19,8 +19,10 @@ public class TweakedAdventureConfig {
 	private boolean releaseCrits = true;
 	private boolean releaseKnockback = true;
 	private boolean releaseMeleeDamage = true;
+	private boolean animalDespawning = true;
+	private boolean frequentAnimalRespawning = true;
 	private boolean dropPanes = true;
-	private boolean growableSwampTrees = false;
+	private boolean growableSwampTrees = true;
 	private ExperienceBarType experienceBarType = ExperienceBarType.NONE;
 
 	public boolean forestsInPlains() {
@@ -47,12 +49,20 @@ public class TweakedAdventureConfig {
 		return releaseCrits;
 	}
 
+	public boolean releaseKnockback() {
+		return releaseKnockback;
+	}
+
 	public boolean releaseMeleeDamage() {
 		return releaseMeleeDamage;
 	}
 
-	public boolean releaseKnockback() {
-		return releaseKnockback;
+	public boolean animalDespawning() {
+		return animalDespawning;
+	}
+
+	public boolean frequentAnimalRespawning() {
+		return frequentAnimalRespawning;
 	}
 
 	public boolean dropPanes() {

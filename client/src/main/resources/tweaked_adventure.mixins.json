@@ -8,6 +8,7 @@
     "CraftingManagerMixin",
     "DamageSourceMixin",
     "GameGuiMixin",
+    "InputPlayerEntityMixin",
     "MinecraftMixin",
     "NaturalSpawnerMixin",
     "PlayerEntityMixin",

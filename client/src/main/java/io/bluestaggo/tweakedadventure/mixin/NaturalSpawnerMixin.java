@@ -1,5 +1,6 @@
 package io.bluestaggo.tweakedadventure.mixin;
 
+import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.world.NaturalSpawner;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -20,7 +21,9 @@ public abstract class NaturalSpawnerMixin {
 		cancellable = true
 	)
 	private static void blockPopulateChunk(World world, Biome biome, int chunkCenterX, int chunkCenterZ, int rangeX, int rangeZ, Random random, CallbackInfo ci) {
-		ci.cancel();
+		if (TweakedAdventureConfig.getInstance().frequentAnimalRespawning()) {
+			ci.cancel();
+		}
 	}
 
 	@Inject(
