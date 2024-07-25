@@ -128,14 +128,4 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 		}
 		return constant;
 	}
-
-	@Redirect(
-		method = "jump",
-		at = @At(
-			value = "INVOKE",
-			target = "Lnet/minecraft/entity/living/player/PlayerEntity;increaseXp(I)V"
-		)
-	)
-	private void noDebugXpOnJump(PlayerEntity instance, int levels) {
-	}
 }
