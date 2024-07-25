@@ -80,9 +80,9 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 	)
 	private float reduceKnockback(float constant) {
 		if (TweakedAdventureConfig.getInstance().releaseKnockback()) {
-			return 1.0f;
+			return 0.5f;
 		}
-		return 0.5f;
+		return 1.0f;
 	}
 
 	@ModifyArg(
