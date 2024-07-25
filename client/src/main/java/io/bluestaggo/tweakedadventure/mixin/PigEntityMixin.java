@@ -13,8 +13,8 @@ public abstract class PigEntityMixin extends AnimalEntity {
 	}
 
 	@Override
-	protected void dropLoot(boolean bl) {
-		int drops = this.random.nextInt(3) + 1;
+	protected void dropLoot(boolean bl, int lootingMultiplier) {
+		int drops = this.random.nextInt(3) + 1 + this.random.nextInt(1 + lootingMultiplier);
 		for (int i = 0; i < drops; ++i) {
 			if (this.isOnFire()) {
 				this.dropItem(Item.COOKED_PORKCHOP.id, 1);

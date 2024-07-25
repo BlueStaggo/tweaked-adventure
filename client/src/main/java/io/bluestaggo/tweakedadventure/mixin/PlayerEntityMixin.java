@@ -75,14 +75,14 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 	@ModifyConstant(
 		method = "attack",
 		constant = @Constant(
-			floatValue = 1.0f
+			floatValue = 0.5f
 		)
 	)
 	private float reduceKnockback(float constant) {
 		if (TweakedAdventureConfig.getInstance().releaseKnockback()) {
-			return 0.5f;
+			return 1.0f;
 		}
-		return 1.0f;
+		return 0.5f;
 	}
 
 	@ModifyArg(
@@ -127,5 +127,15 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 			constant *= 2.5f;
 		}
 		return constant;
+	}
+
+	@ModifyConstant(
+		method = "m_9018481",
+		constant = @Constant(
+			intValue = 6
+		)
+	)
+	private int broChillTheHellOutYoureGonnaTriggerEpilepsyOwMyEyesHurtAndIDontEvenHaveEpilepsyAAAAA(int constant) {
+		return 8;
 	}
 }

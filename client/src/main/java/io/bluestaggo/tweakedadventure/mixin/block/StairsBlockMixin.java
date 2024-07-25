@@ -25,7 +25,7 @@ public abstract class StairsBlockMixin extends Block {
 		at = @At("HEAD"),
 		cancellable = true
 	)
-	private void getDropStairs(int metadata, Random random, CallbackInfoReturnable<Integer> cir) {
+	private void getDropStairs(int metadata, Random random, int fortuneLevel, CallbackInfoReturnable<Integer> cir) {
 		cir.setReturnValue(this.id);
 	}
 
@@ -34,7 +34,7 @@ public abstract class StairsBlockMixin extends Block {
 		at = @At("HEAD"),
 		cancellable = true
 	)
-	private void dropStairs(World world, int x, int y, int z, int metadata, float luck, CallbackInfo ci) {
+	private void dropStairs(World world, int x, int y, int z, int metadata, float luck, int fortuneLevel, CallbackInfo ci) {
 		ci.cancel();
 		if (world.isMultiplayer || world.random.nextFloat() > luck) return;
 		this.dropItems(world, x, y, z, new ItemStack(this.id, 1, 0));

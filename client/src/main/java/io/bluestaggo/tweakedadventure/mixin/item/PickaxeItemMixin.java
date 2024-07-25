@@ -32,6 +32,10 @@ public abstract class PickaxeItemMixin extends ToolItem {
 		Block.NETHER_BRICKS,
 		Block.NETHER_BRICK_STAIRS,
 		Block.NETHER_BRICK_FENCE,
+		Block.ENCHANTING_TABLE,
+		Block.BREWING_STAND,
+		Block.CAULDRON,
+		Block.END_STONE,
 	};
 
 	private PickaxeItemMixin(int id, int attackDamage, ToolMaterial toolMaterial, Block[] blocks) {
