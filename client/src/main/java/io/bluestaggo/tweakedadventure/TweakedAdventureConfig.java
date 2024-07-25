@@ -24,7 +24,7 @@ public class TweakedAdventureConfig {
 	private boolean pigmenDropPorkchops = false;
 	private boolean growableSwampTrees = true;
 	private boolean murkySwamps = true;
-	private ExperienceBarType experienceBarType = ExperienceBarType.NONE;
+	private ExperienceBarType experienceBarType = ExperienceBarType.BAR_AND_LEVELS;
 
 	public boolean forestsInPlains() {
 		return forestsInPlains;

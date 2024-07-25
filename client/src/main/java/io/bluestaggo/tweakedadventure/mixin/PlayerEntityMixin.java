@@ -94,9 +94,8 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 		index = 1
 	)
 	private int reduceCrits(int amount, @Local(ordinal = 0, argsOnly = true) Entity target) {
-		if (TweakedAdventureConfig.getInstance().releaseCrits()) {
-			amount = this.inventory.getAttackDamage(target);
-			amount += this.random.nextInt(amount / 2 + 2);
+		if (!TweakedAdventureConfig.getInstance().releaseCrits()) {
+			return this.inventory.getAttackDamage(target) * 3 / 2 + 1;
 		}
 		return amount;
 	}
