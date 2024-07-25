@@ -29,6 +29,9 @@ public abstract class PickaxeItemMixin extends ToolItem {
 		Block.GLOWSTONE,
 		Block.STONE_PRESSURE_PLATE,
 		Block.STONE_BUTTON,
+		Block.NETHER_BRICKS,
+		Block.NETHER_BRICK_STAIRS,
+		Block.NETHER_BRICK_FENCE,
 	};
 
 	private PickaxeItemMixin(int id, int attackDamage, ToolMaterial toolMaterial, Block[] blocks) {

@@ -15,7 +15,8 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 public abstract class ShovelItemMixin extends ToolItem {
 	@Unique private static final Block[] EXTRA_EFFECTIVE_BLOCKS = {
 		Block.FARMLAND,
-		Block.SOUL_SAND
+		Block.SOUL_SAND,
+		Block.MYCELIUM,
 	};
 
 	private ShovelItemMixin(int id, int attackDamage, ToolMaterial toolMaterial, Block[] blocks) {
