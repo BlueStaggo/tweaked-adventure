@@ -21,7 +21,6 @@
     "block.BlockMixin",
     "block.PaneBlockMixin",
     "block.SaplingBlockMixin",
-    "block.StairsBlockMixin",
     "enchantment.BetterLootEnchantmentMixin",
     "enchantment.DamageEnchantmentMixin",
     "enchantment.EnchantmentHelperMixin",
