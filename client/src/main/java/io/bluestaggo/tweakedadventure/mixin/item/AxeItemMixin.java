@@ -24,7 +24,8 @@ public abstract class AxeItemMixin extends ToolItem {
 		Block.FENCE,
 		Block.FENCE_GATE,
 		Block.BROWN_MUSHROOM_BLOCK,
-		Block.RED_MUSHROOM_BLOCK
+		Block.RED_MUSHROOM_BLOCK,
+		Block.MELON_BLOCK,
 	};
 
 	private AxeItemMixin(int id, int attackDamage, ToolMaterial toolMaterial, Block[] blocks) {
