@@ -20,7 +20,7 @@ public class TweakedAdventureConfig {
 	private boolean releaseMeleeDamage = true;
 	private boolean animalDespawning = true;
 	private boolean frequentAnimalRespawning = true;
-	private boolean dropPanes = true;
+	private boolean dropPanes = false;
 	private boolean pigmenDropPorkchops = false;
 	private boolean growableSwampTrees = true;
 	private boolean murkySwamps = true;
