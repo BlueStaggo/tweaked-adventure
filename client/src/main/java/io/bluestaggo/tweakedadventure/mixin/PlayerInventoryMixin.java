@@ -47,17 +47,4 @@ public abstract class PlayerInventoryMixin implements Inventory {
 			cir.setReturnValue((totalProtection - 1) * totalDurability / totalMaxDamage + 1);
 		}
 	}
-
-	@ModifyVariable(
-		method = "damageArmor",
-		at = @At("HEAD"),
-		ordinal = 0,
-		argsOnly = true
-	)
-	private int reduceArmorDamage(int value) {
-		if (TweakedAdventureConfig.getInstance().releaseArmor()) {
-			return 1;
-		}
- 		return value;
-	}
 }
