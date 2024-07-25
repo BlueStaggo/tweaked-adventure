@@ -36,7 +36,7 @@ public abstract class ZombiePigmanEntityMixin extends ZombieEntity {
 		)
 	)
 	private Item dropFleshLoot() {
-		return TweakedAdventureConfig.getInstance().pigmenDropPorkchops() ? Item.ROTTEN_FLESH : Item.COOKED_PORKCHOP;
+		return TweakedAdventureConfig.getInstance().pigmenDropPorkchops() ? Item.COOKED_PORKCHOP : Item.ROTTEN_FLESH;
 	}
 
 	@Redirect(
