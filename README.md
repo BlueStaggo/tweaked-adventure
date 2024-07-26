@@ -18,7 +18,7 @@ Available for Beta 1.8.1, Beta 1.9 Prerelease, Beta 1.9 Prerelease 2, Beta 1.9 P
 ## Configurable Features
 These features are configurable in `.minecraft/config/tweaked-adventure.json`:
 - Revert to Beta 1.7 passive mob spawning mechanics (default: enabled)
-- Optional passive mob despawning (also disables mob breeding) (default: enabled before b1.9-pre3)
+- Optional passive mob despawning (also disables mob breeding) (default: enabled)
 - Hill biomes for varied height (default: enabled)
 - Backport of 1.0.0 weapon and armor changes (default: all enabled)
 - Oak saplings in swamp biomes grow into swamp trees (default: enabled)
