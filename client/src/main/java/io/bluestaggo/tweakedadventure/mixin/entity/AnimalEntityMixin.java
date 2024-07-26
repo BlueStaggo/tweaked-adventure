@@ -1,4 +1,4 @@
-package io.bluestaggo.tweakedadventure.mixin;
+package io.bluestaggo.tweakedadventure.mixin.entity;
 
 import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.entity.living.mob.PathAwareEntity;
