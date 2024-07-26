@@ -1,4 +1,4 @@
-package io.bluestaggo.tweakedadventure.mixin;
+package io.bluestaggo.tweakedadventure.mixin.entity;
 
 import net.minecraft.entity.living.mob.passive.animal.AnimalEntity;
 import net.minecraft.entity.living.mob.passive.animal.PigEntity;
