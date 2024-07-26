@@ -10,7 +10,6 @@
     "GameGuiMixin",
     "entity.player.InputPlayerEntityMixin",
     "entity.LivingEntityMixin",
-    "InputPlayerEntityMixin",
     "MinecraftMixin",
     "NaturalSpawnerMixin",
     "entity.PigEntityMixin",
