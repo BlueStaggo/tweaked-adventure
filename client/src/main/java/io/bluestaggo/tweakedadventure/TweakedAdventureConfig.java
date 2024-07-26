@@ -21,9 +21,9 @@ public class TweakedAdventureConfig {
 	private boolean animalDespawning = true;
 	private boolean frequentAnimalRespawning = true;
 	private boolean dropPanes = false;
-	private boolean pigmenDropPorkchops = false;
+	private boolean pigmenDropPorkchops = true;
 	private boolean growableSwampTrees = true;
-	private boolean murkySwamps = true;
+	private boolean murkySwamps = false;
 	private ExperienceBarType experienceBarType = ExperienceBarType.BAR_AND_LEVELS;
 
 	public boolean forestsInPlains() {
