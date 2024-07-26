@@ -1,4 +1,4 @@
-package io.bluestaggo.tweakedadventure.mixin;
+package io.bluestaggo.tweakedadventure.mixin.entity.player;
 
 import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.entity.player.PlayerInventory;
@@ -9,7 +9,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerInventory.class)
