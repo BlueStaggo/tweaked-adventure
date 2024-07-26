@@ -10,7 +10,7 @@
     "GameGuiMixin",
     "entity.player.InputPlayerEntityMixin",
     "InputPlayerEntityMixin",
-    "MagmaCubeEntityMixin",
+    "entity.MagmaCubeEntityMixin",
     "MinecraftMixin",
     "NaturalSpawnerMixin",
     "entity.PigEntityMixin",
