@@ -9,7 +9,7 @@
     "entity.DamageSourceMixin",
     "GameGuiMixin",
     "entity.player.InputPlayerEntityMixin",
-    "InputPlayerEntityMixin",
+    "entity.LivingEntityMixin",
     "entity.MagmaCubeEntityMixin",
     "MinecraftMixin",
     "NaturalSpawnerMixin",
