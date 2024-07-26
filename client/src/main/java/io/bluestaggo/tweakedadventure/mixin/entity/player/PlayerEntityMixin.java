@@ -1,4 +1,4 @@
-package io.bluestaggo.tweakedadventure.mixin.entity;
+package io.bluestaggo.tweakedadventure.mixin.entity.player;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;

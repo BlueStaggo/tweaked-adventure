@@ -1,4 +1,4 @@
-package io.bluestaggo.tweakedadventure.mixin.entity;
+package io.bluestaggo.tweakedadventure.mixin.entity.player;
 
 import net.minecraft.client.entity.living.player.InputPlayerEntity;
 import net.minecraft.entity.living.player.PlayerEntity;
