@@ -1,7 +1,7 @@
 # Staggo's Tweaked Adventure
-Too many things bugging you from playing Beta 1.8, Beta 1.9 or 1.0.0? Well, this [Ornithe](https://ornithemc.net) mod fixes that! Now the Adventure Update is fun again!
+Too many things bugging you from playing the Adventure Update? Well, this [Ornithe](https://ornithemc.net) mod fixes that! Now the Adventure Update is fun again!
 
-Available for Beta 1.8.1, Beta 1.9 Prerelease, Beta 1.9 Prerelease 2, Beta 1.9 Prerelease 5 and 1.0.0.
+Available for Beta 1.8.1, Beta 1.9 Prerelease, Beta 1.9 Prerelease 2, Beta 1.9 Prerelease 5, 1.0.0 and 1.1.
 
 ## Main Features
 - Fixed breaking times for all blocks
