@@ -3,12 +3,12 @@ package io.bluestaggo.tweakedadventure.worldgen;
 import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.IntArrays;
+import net.minecraft.world.biome.layer.AddDeepOceanLayer;
 import net.minecraft.world.biome.layer.Layer;
 
-public class AddHillsLayer extends Layer {
+public class AddHillsLayer extends AddDeepOceanLayer {
 	public AddHillsLayer(long seed, Layer parent) {
-		super(seed);
-		this.parent = parent;
+		super(seed, parent);
 	}
 
 	@Override

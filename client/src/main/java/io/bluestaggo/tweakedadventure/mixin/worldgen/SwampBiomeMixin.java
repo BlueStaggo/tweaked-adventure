@@ -20,7 +20,7 @@ public abstract class SwampBiomeMixin extends Biome {
 	@ModifyConstant(
 		method = "<init>",
 		constant = @Constant(
-			intValue = 14745456
+			intValue = 14745518
 		)
 	)
 	private int restoreWaterColor(int constant) {

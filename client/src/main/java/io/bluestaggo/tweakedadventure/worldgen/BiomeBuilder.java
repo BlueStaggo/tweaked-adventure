@@ -35,4 +35,9 @@ class BiomeBuilder {
 		((BiomeInvoker) this.biome).setSnowy(true);
 		return this;
 	}
+
+	public BiomeBuilder disableSnow() {
+		((BiomeInvoker) this.biome).setSnowy(false);
+		return this;
+	}
 }
