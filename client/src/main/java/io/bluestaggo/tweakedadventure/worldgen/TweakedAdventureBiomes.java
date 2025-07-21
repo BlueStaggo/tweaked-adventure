@@ -56,21 +56,12 @@ public class TweakedAdventureBiomes {
 			biomeBuilder.color(5159473).name("TaigaHills").climate(Biome.TAIGA);
 			biomeHeightType.applyHillsHeight(biomeBuilder);
 
-			switch (TweakedAdventureConfig.getInstance().taigaType()) {
-				case SNOWY:
-					biomeBuilder.climate(0.05f, 0.8f).enableSnow();
-					SNOWY_TAIGA_HILLS = TAIGA_HILLS;
-					break;
-
-				case SNOWY_AND_SLOWLESS:
-					biomeBuilder.biome = SNOWY_TAIGA_HILLS = new TaigaBiome(getNextID());
-					biomeBuilder.color(5159473).name("Snowy TaigaHills").climate(0.05f, 0.8f).enableSnow();
-					biomeHeightType.applyHillsHeight(biomeBuilder);
-					break;
-
-				default:
-					SNOWY_TAIGA_HILLS = TAIGA_HILLS;
-					break;
+			if (TweakedAdventureConfig.getInstance().taigaType() == TweakedAdventureConfig.TaigaType.SNOWY_AND_SLOWLESS) {
+				biomeBuilder.biome = SNOWY_TAIGA_HILLS = new TaigaBiome(getNextID());
+				biomeBuilder.color(5159473).name("Snowy TaigaHills").climate(0.05f, 0.8f).enableSnow();
+				biomeHeightType.applyHillsHeight(biomeBuilder);
+			} else {
+				SNOWY_TAIGA_HILLS = TAIGA_HILLS;
 			}
 		} else {
 			DESERT_HILLS = Biome.DESERT;
