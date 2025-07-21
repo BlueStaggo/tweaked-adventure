@@ -13,6 +13,7 @@
     "block.BookshelfBlockMixin",
     "block.PaneBlockMixin",
     "block.SaplingBlockMixin",
+    "block.SnowLayerBlockMixin",
     "block.StairsBlockMixin",
     "entity.AnimalEntityMixin",
     "entity.DamageSourceMixin",
@@ -33,6 +34,7 @@
     "worldgen.BiomeInvoker",
     "worldgen.LargeOakTreeFeatureMixin",
     "worldgen.LayerMixin",
+    "worldgen.RiverMixLayerMixin",
     "worldgen.SwampBiomeMixin",
     "worldgen.VeinFeatureMixin"
   ],
