@@ -32,22 +32,42 @@ public abstract class EndermanEntityMixin extends HostileEntity {
 				Arrays.fill(HOLDABLE_BLOCKS, false);
 				break;
 			case RESTRICTED:
-				Arrays.fill(HOLDABLE_BLOCKS, false);
-				HOLDABLE_BLOCKS[Block.GRASS.id] = true;
-				HOLDABLE_BLOCKS[Block.DIRT.id] = true;
-				HOLDABLE_BLOCKS[Block.SAND.id] = true;
-				HOLDABLE_BLOCKS[Block.GRAVEL.id] = true;
-				HOLDABLE_BLOCKS[Block.YELLOW_FLOWER.id] = true;
-				HOLDABLE_BLOCKS[Block.RED_FLOWER.id] = true;
-				HOLDABLE_BLOCKS[Block.BROWN_MUSHROOM.id] = true;
-				HOLDABLE_BLOCKS[Block.RED_MUSHROOM.id] = true;
-				HOLDABLE_BLOCKS[Block.TNT.id] = true;
-				HOLDABLE_BLOCKS[Block.CACTUS.id] = true;
-				HOLDABLE_BLOCKS[Block.CLAY.id] = true;
-				HOLDABLE_BLOCKS[Block.PUMPKIN.id] = true;
-				HOLDABLE_BLOCKS[Block.MELON_BLOCK.id] = true;
 				break;
 			case FULL:
+				HOLDABLE_BLOCKS[Block.STONE.id] = true;
+				HOLDABLE_BLOCKS[Block.COBBLESTONE.id] = true;
+				HOLDABLE_BLOCKS[Block.PLANKS.id] = true;
+				HOLDABLE_BLOCKS[Block.GOLD_ORE.id] = true;
+				HOLDABLE_BLOCKS[Block.IRON_ORE.id] = true;
+				HOLDABLE_BLOCKS[Block.COAL_ORE.id] = true;
+				HOLDABLE_BLOCKS[Block.LOG.id] = true;
+				HOLDABLE_BLOCKS[Block.LEAVES.id] = true;
+				HOLDABLE_BLOCKS[Block.SPONGE.id] = true;
+				HOLDABLE_BLOCKS[Block.GLASS.id] = true;
+				HOLDABLE_BLOCKS[Block.LAPIS_ORE.id] = true;
+				HOLDABLE_BLOCKS[Block.LAPIS_BLOCK.id] = true;
+				HOLDABLE_BLOCKS[Block.SANDSTONE.id] = true;
+				HOLDABLE_BLOCKS[Block.WOOL.id] = true;
+				HOLDABLE_BLOCKS[Block.GOLD_BLOCK.id] = true;
+				HOLDABLE_BLOCKS[Block.IRON_BLOCK.id] = true;
+				HOLDABLE_BLOCKS[Block.BRICKS.id] = true;
+				HOLDABLE_BLOCKS[Block.BOOKSHELF.id] = true;
+				HOLDABLE_BLOCKS[Block.MOSSY_COBBLESTONE.id] = true;
+				HOLDABLE_BLOCKS[Block.DIAMOND_ORE.id] = true;
+				HOLDABLE_BLOCKS[Block.DIAMOND_BLOCK.id] = true;
+				HOLDABLE_BLOCKS[Block.CRAFTING_TABLE.id] = true;
+				HOLDABLE_BLOCKS[Block.REDSTONE_ORE.id] = true;
+				HOLDABLE_BLOCKS[Block.LIT_REDSTONE_ORE.id] = true;
+				HOLDABLE_BLOCKS[Block.ICE.id] = true;
+				HOLDABLE_BLOCKS[Block.NETHERRACK.id] = true;
+				HOLDABLE_BLOCKS[Block.SOUL_SAND.id] = true;
+				HOLDABLE_BLOCKS[Block.GLOWSTONE.id] = true;
+				HOLDABLE_BLOCKS[Block.LIT_PUMPKIN.id] = true;
+				HOLDABLE_BLOCKS[Block.STONE_BRICKS.id] = true;
+				HOLDABLE_BLOCKS[Block.BROWN_MUSHROOM_BLOCK.id] = true;
+				HOLDABLE_BLOCKS[Block.RED_MUSHROOM_BLOCK.id] = true;
+				HOLDABLE_BLOCKS[Block.MYCELIUM.id] = true;
+				HOLDABLE_BLOCKS[Block.NETHER_BRICKS.id] = true;
 				break;
 		}
 	}
