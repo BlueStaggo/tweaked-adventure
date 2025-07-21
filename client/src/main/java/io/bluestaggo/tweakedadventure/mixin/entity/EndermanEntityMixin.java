@@ -68,6 +68,7 @@ public abstract class EndermanEntityMixin extends HostileEntity {
 				HOLDABLE_BLOCKS[Block.RED_MUSHROOM_BLOCK.id] = true;
 				HOLDABLE_BLOCKS[Block.MYCELIUM.id] = true;
 				HOLDABLE_BLOCKS[Block.NETHER_BRICKS.id] = true;
+				HOLDABLE_BLOCKS[Block.END_STONE.id] = true;
 				break;
 		}
 	}
