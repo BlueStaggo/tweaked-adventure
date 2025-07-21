@@ -16,6 +16,7 @@ public class TweakedAdventureConfig {
 	private boolean lowerXpRequirement = true;
 	private boolean higherOres = true;
 	private boolean cheaperRecipes = true;
+	private boolean moreStackables = true;
 	private boolean forestsInPlains = true;
 	private boolean hillBiomes = true;
 	private TaigaType taigaType = TaigaType.SNOWY_AND_SLOWLESS;
@@ -46,6 +47,10 @@ public class TweakedAdventureConfig {
 
 	public boolean cheaperRecipes() {
 		return cheaperRecipes;
+	}
+
+	public boolean moreStackables() {
+		return moreStackables;
 	}
 
 	public boolean forestsInPlains() {
