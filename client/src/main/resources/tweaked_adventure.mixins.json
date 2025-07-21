@@ -17,6 +17,7 @@
     "block.StairsBlockMixin",
     "entity.AnimalEntityMixin",
     "entity.DamageSourceMixin",
+    "entity.EndermanEntityMixin",
     "entity.PigEntityMixin",
     "entity.StatusEffectMixin",
     "entity.ZombiePigmanEntityMixin",

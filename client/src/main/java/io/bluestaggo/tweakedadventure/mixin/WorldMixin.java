@@ -5,8 +5,6 @@ import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(World.class)
 public abstract class WorldMixin {
