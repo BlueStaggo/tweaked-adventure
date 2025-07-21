@@ -34,7 +34,7 @@ public class TweakedAdventureBiomes {
 				break;
 
 			case SNOWY_AND_SLOWLESS:
-				biomeBuilder.biome = SNOWY_TAIGA = new TaigaBiome(getNextID());
+				biomeBuilder.biome = SNOWY_TAIGA = new TaigaBiome(getNextID(30));
 				biomeBuilder.color(0x31554A).name("Snowy Taiga").climate(0.05f, 0.8f).height(0.1f, 0.4f).enableSnow();
 				biomeBuilder.biome = Biome.TAIGA;
 				biomeBuilder.climate(0.3f, 0.8f).disableSnow();
@@ -61,7 +61,7 @@ public class TweakedAdventureBiomes {
 					break;
 
 				case SNOWY_AND_SLOWLESS:
-					biomeBuilder.biome = SNOWY_TAIGA_HILLS = new TaigaBiome(getNextID());
+					biomeBuilder.biome = SNOWY_TAIGA_HILLS = new TaigaBiome(getNextID(31));
 					biomeBuilder.color(5159473).name("Snowy TaigaHills").climate(0.05f, 0.8f).enableSnow();
 					biomeHeightType.applyHillsHeight(biomeBuilder);
 					biomeBuilder.biome = Biome.TAIGA_HILLS;
@@ -83,6 +83,14 @@ public class TweakedAdventureBiomes {
 	}
 
 	private static int getNextID() {
+		return getNextID(-1);
+	}
+
+	private static int getNextID(int borrowId) {
+		if (borrowId >= 0 && Biome.BY_ID[borrowId] == null) {
+			return borrowId;
+		}
+
 		while (nextID < Biome.BY_ID.length && Biome.BY_ID[nextID] != null) {
 			nextID++;
 		}
