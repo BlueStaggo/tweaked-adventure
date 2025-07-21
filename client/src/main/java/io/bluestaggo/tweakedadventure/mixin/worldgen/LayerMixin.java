@@ -1,5 +1,7 @@
 package io.bluestaggo.tweakedadventure.mixin.worldgen;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import io.bluestaggo.tweakedadventure.worldgen.AddHillsLayer;
 import net.minecraft.world.biome.layer.AddIslandLayer;
@@ -12,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(Layer.class)
 public class LayerMixin {
-	@Redirect(
+	@WrapOperation(
 		method = "init",
 		at = @At(
 			value = "NEW",
@@ -20,14 +22,14 @@ public class LayerMixin {
 			ordinal = 3
 		)
 	)
-	private static AddIslandLayer shrinkLand1(long seed, Layer parent) {
+	private static AddIslandLayer shrinkLand1(long seed, Layer parent, Operation<AddIslandLayer> original) {
 		if (TweakedAdventureConfig.getInstance().releaseLandScale()) {
-			seed = 4L;
+			return new AddIslandLayer(4, parent);
 		}
-		return new AddIslandLayer(seed, parent);
+		return original.call(seed, parent);
 	}
 
-	@Redirect(
+	@WrapOperation(
 		method = "init",
 		at = @At(
 			value = "NEW",
@@ -35,7 +37,7 @@ public class LayerMixin {
 			ordinal = 3
 		)
 	)
-	private static ZoomLayer shrinkLand2(long seed, Layer parent) {
+	private static ZoomLayer shrinkLand2(long seed, Layer parent, Operation<ZoomLayer> original) {
 		if (TweakedAdventureConfig.getInstance().releaseLandScale()) {
 			return new ZoomLayer(seed, parent) {
 				@Override
@@ -44,10 +46,10 @@ public class LayerMixin {
 				}
 			};
 		}
-		return new ZoomLayer(seed, parent);
+		return original.call(seed, parent);
 	}
 
-	@Redirect(
+	@WrapOperation(
 		method = "init",
 		at = @At(
 			value = "NEW",
@@ -55,7 +57,7 @@ public class LayerMixin {
 			ordinal = 4
 		)
 	)
-	private static AddIslandLayer shrinkLand3(long seed, Layer parent) {
+	private static AddIslandLayer shrinkLand3(long seed, Layer parent, Operation<AddIslandLayer> original) {
 		if (TweakedAdventureConfig.getInstance().releaseLandScale()) {
 			return new AddIslandLayer(seed, parent) {
 				@Override
@@ -64,10 +66,10 @@ public class LayerMixin {
 				}
 			};
 		}
-		return new AddIslandLayer(seed, parent);
+		return original.call(seed, parent);
 	}
 
-	@Redirect(
+	@WrapOperation(
 		method = "init",
 		at = @At(
 			value = "INVOKE",
@@ -75,8 +77,8 @@ public class LayerMixin {
 			ordinal = 3
 		)
 	)
-	private static Layer addHills(long seed, Layer layer, int magnification) {
-		layer = ZoomLayer.zoom(seed, layer, magnification);
+	private static Layer addHills(long seed, Layer layer, int magnification, Operation<Layer> original) {
+		layer = original.call(seed, layer, magnification);
 		if (!TweakedAdventureConfig.getInstance().hillBiomes()) {
 			return layer;
 		}

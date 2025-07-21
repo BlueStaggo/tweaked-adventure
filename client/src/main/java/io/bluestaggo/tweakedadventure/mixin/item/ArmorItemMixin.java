@@ -1,5 +1,6 @@
 package io.bluestaggo.tweakedadventure.mixin.item;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.item.ArmorItem;
@@ -29,16 +30,16 @@ public abstract class ArmorItemMixin extends Item {
 		super(id);
 	}
 
-	@Redirect(
+	@ModifyExpressionValue(
 		method = "<init>",
 		at = @At(
 			value = "FIELD",
 			target = "Lnet/minecraft/item/ArmorItem;BASE_PROTECTION:[I"
 		)
 	)
-	private int[] releaseProtection(@Local(ordinal = 2, argsOnly = true) int materialId) {
+	private int[] releaseProtection(int[] original, @Local(ordinal = 2, argsOnly = true) int materialId) {
 		if (!TweakedAdventureConfig.getInstance().releaseArmor()) {
-			return BASE_PROTECTION;
+			return original;
 		}
 		return PROTECTION_PER_MATERIAL[materialId];
 	}

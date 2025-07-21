@@ -1,5 +1,6 @@
 package io.bluestaggo.tweakedadventure.mixin.entity;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.entity.living.mob.hostile.ZombieEntity;
 import net.minecraft.entity.living.mob.hostile.ZombiePigmanEntity;
@@ -15,14 +16,17 @@ public abstract class ZombiePigmanEntityMixin extends ZombieEntity {
 		super(world);
 	}
 
-	@Redirect(
+	@ModifyExpressionValue(
 		method = "getDroppedItem",
 		at = @At(
 			value = "FIELD",
 			target = "Lnet/minecraft/item/Item;COOKED_PORKCHOP:Lnet/minecraft/item/Item;"
 		)
 	)
-	private Item getDroppedFlesh() {
-		return TweakedAdventureConfig.getInstance().pigmenDropPorkchops() ? Item.COOKED_PORKCHOP : Item.ROTTEN_FLESH;
+	private Item getDroppedFlesh(Item original) {
+		if (TweakedAdventureConfig.getInstance().pigmenDropPorkchops()) {
+			return original;
+		}
+		return Item.ROTTEN_FLESH;
 	}
 }

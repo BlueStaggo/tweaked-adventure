@@ -1,5 +1,7 @@
 package io.bluestaggo.tweakedadventure.mixin.worldgen;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.world.biome.layer.AddIslandLayer;
@@ -14,7 +16,7 @@ public abstract class AddIslandLayerMixin extends Layer {
 		super(seed);
 	}
 
-	@Redirect(
+	@WrapOperation(
 		method = "nextValues",
 		at = @At(
 			value = "INVOKE",
@@ -23,13 +25,14 @@ public abstract class AddIslandLayerMixin extends Layer {
 		)
 	)
 	private int noPlainsOceans(AddIslandLayer instance, int bound,
+							   Operation<Integer> original,
 							   @Local(ordinal = 10) int neighbor0,
 							   @Local(ordinal = 11) int neighbor1,
 							   @Local(ordinal = 12) int neighbor2,
 							   @Local(ordinal = 13) int neighbor3) {
 		if (TweakedAdventureConfig.getInstance().oceansInPlains()
 				|| neighbor0 == 0 || neighbor1 == 0 || neighbor2 == 0 || neighbor3 == 0) {
-			return this.nextInt(bound);
+			return original.call(instance, bound);
 		}
 		return 0;
 	}

@@ -3,7 +3,7 @@ package io.bluestaggo.tweakedadventure.worldgen;
 import io.bluestaggo.tweakedadventure.mixin.worldgen.BiomeInvoker;
 import net.minecraft.world.biome.Biome;
 
-class BiomeBuilder {
+public class BiomeBuilder {
 	public Biome biome;
 
 	public BiomeBuilder name(String name) {
