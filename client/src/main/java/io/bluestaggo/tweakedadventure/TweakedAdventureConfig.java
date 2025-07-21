@@ -36,6 +36,7 @@ public class TweakedAdventureConfig {
 	private boolean murkySwamps = true;
 	private ExperienceBarType experienceBarType = ExperienceBarType.NONE;
 	private BiomeHeightType biomeHeightType = BiomeHeightType.HYBRID;
+	private EndermanGriefingLevel endermanGriefingLevel = EndermanGriefingLevel.RESTRICTED;
 
 	public boolean modernExhaustion() {
 		return modernExhaustion;
@@ -133,6 +134,10 @@ public class TweakedAdventureConfig {
 		return biomeHeightType;
 	}
 
+	public EndermanGriefingLevel endermanGriefingLevel() {
+		return endermanGriefingLevel;
+	}
+
 	public static TweakedAdventureConfig getInstance() {
 		return instance;
 	}
@@ -215,6 +220,12 @@ public class TweakedAdventureConfig {
 					biomeBuilder.height(0.2f, 0.6f);
 			}
 		}
+	}
+
+	public enum EndermanGriefingLevel {
+		@SerializedName("disabled") DISABLED,
+		@SerializedName("restricted") RESTRICTED,
+		@SerializedName("full") FULL
 	}
 
 	static {
