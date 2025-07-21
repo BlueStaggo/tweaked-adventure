@@ -6,6 +6,7 @@
   "mixins": [
     "CraftingManagerMixin",
     "GameGuiMixin",
+    "LanguageManagerMixin",
     "MinecraftMixin",
     "NaturalSpawnerMixin",
     "WorldMixin",
@@ -42,7 +43,8 @@
     "worldgen.OverworldChunkGeneratorMixin",
     "worldgen.RiverMixLayerMixin",
     "worldgen.SwampBiomeMixin",
-    "worldgen.VeinFeatureMixin"
+    "worldgen.VeinFeatureMixin",
+    "worldgen.WorldGeneratorTypeAccessor"
   ],
   "client": [
   ],

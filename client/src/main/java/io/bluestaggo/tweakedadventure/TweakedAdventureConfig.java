@@ -16,6 +16,7 @@ public class TweakedAdventureConfig {
 	private boolean lowerXpRequirement = true;
 	private boolean higherOres = true;
 	private boolean cheaperRecipes = true;
+	private boolean plankVariants = true;
 	private boolean moreStackables = true;
 	private boolean forestsInPlains = true;
 	private boolean hillBiomes = true;
@@ -51,6 +52,10 @@ public class TweakedAdventureConfig {
 
 	public boolean cheaperRecipes() {
 		return cheaperRecipes;
+	}
+
+	public boolean plankVariants() {
+		return plankVariants;
 	}
 
 	public boolean moreStackables() {

@@ -26,14 +26,16 @@ public abstract class CraftingManagerMixin {
 		ordinal = 0
 	)
 	private ItemStack modifyShaped(ItemStack item) {
+		if (!TweakedAdventureConfig.getInstance().plankVariants() && item.itemId == Block.PLANKS.id) {
+			item.setDamage(0);
+		}
+
 		if (!TweakedAdventureConfig.getInstance().cheaperRecipes()) {
 			return item;
 		}
 
 		if (tweakedAdventure$StackSizeModifications == null) {
 			tweakedAdventure$StackSizeModifications = new Int2ObjectOpenHashMap<>();
-			tweakedAdventure$StackSizeModifications.put(Block.STONE_SLAB.id, new IntIntImmutablePair(3, 6));
-			tweakedAdventure$StackSizeModifications.put(Block.LADDER.id, new IntIntImmutablePair(1, 3));
 			if (TweakedAdventureConfig.getInstance().moreStackables()) {
 				tweakedAdventure$StackSizeModifications.put(Item.SIGN.id, new IntIntImmutablePair(1, 3));
 				tweakedAdventure$StackSizeModifications.put(Item.WOODEN_DOOR.id, new IntIntImmutablePair(1, 3));
