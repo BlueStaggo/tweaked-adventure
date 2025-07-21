@@ -34,6 +34,7 @@
     "worldgen.BiomeInvoker",
     "worldgen.LargeOakTreeFeatureMixin",
     "worldgen.LayerMixin",
+    "worldgen.OverworldChunkGeneratorMixin",
     "worldgen.RiverMixLayerMixin",
     "worldgen.SwampBiomeMixin",
     "worldgen.VeinFeatureMixin"

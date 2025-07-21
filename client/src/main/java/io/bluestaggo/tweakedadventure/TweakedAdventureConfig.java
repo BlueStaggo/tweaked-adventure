@@ -22,6 +22,8 @@ public class TweakedAdventureConfig {
 	private boolean hillBiomes = true;
 	private TaigaType taigaType = TaigaType.SNOWY_AND_SLOWLESS;
 	private int snowyTaigaInPlainsChance = 4;
+	private boolean snowUnderLeaves = false;
+	private boolean snowReplacesPlants = true;
 	private boolean releaseArmor = true;
 	private boolean releaseCrits = true;
 	private boolean releaseKnockback = true;
@@ -73,6 +75,14 @@ public class TweakedAdventureConfig {
 
 	public int snowyTaigaInPlainsChance() {
 		return snowyTaigaInPlainsChance;
+	}
+
+	public boolean snowUnderLeaves() {
+		return snowUnderLeaves;
+	}
+
+	public boolean snowReplacesPlants() {
+		return snowReplacesPlants;
 	}
 
 	public boolean releaseArmor() {
