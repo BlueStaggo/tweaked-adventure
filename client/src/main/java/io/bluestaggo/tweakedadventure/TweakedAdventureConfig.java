@@ -16,6 +16,7 @@ public class TweakedAdventureConfig {
 	private boolean lowerXpRequirement = true;
 	private boolean higherOres = true;
 	private boolean cheaperRecipes = true;
+	private boolean nightmares = false;
 	private boolean forestsInPlains = false;
 	private boolean hillBiomes = true;
 	private TaigaType taigaType = TaigaType.SNOWY_AND_SLOWLESS;
@@ -28,7 +29,7 @@ public class TweakedAdventureConfig {
 	private boolean dropPanes = true;
 	private boolean pigmenDropPorkchops = true;
 	private boolean growableSwampTrees = true;
-	private boolean murkySwamps = false;
+	private boolean murkySwamps = true;
 	private ExperienceBarType experienceBarType = ExperienceBarType.NONE;
 	private BiomeHeightType biomeHeightType = BiomeHeightType.HYBRID;
 
@@ -46,6 +47,10 @@ public class TweakedAdventureConfig {
 
 	public boolean cheaperRecipes() {
 		return cheaperRecipes;
+	}
+
+	public boolean nightmares() {
+		return nightmares;
 	}
 
 	public boolean forestsInPlains() {
