@@ -20,6 +20,7 @@ public class TweakedAdventureConfig {
 	private boolean forestsInPlains = true;
 	private boolean hillBiomes = true;
 	private TaigaType taigaType = TaigaType.SNOWY_AND_SLOWLESS;
+	private int snowyTaigaInPlainsChance = 4;
 	private boolean releaseArmor = true;
 	private boolean releaseCrits = true;
 	private boolean releaseKnockback = true;
@@ -63,6 +64,10 @@ public class TweakedAdventureConfig {
 
 	public TaigaType taigaType() {
 		return taigaType;
+	}
+
+	public int snowyTaigaInPlainsChance() {
+		return snowyTaigaInPlainsChance;
 	}
 
 	public boolean releaseArmor() {
