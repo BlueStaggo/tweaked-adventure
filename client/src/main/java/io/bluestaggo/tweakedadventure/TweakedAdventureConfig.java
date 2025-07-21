@@ -17,6 +17,7 @@ public class TweakedAdventureConfig {
 	private boolean higherOres = true;
 	private boolean cheaperRecipes = true;
 	private boolean moreStackables = true;
+	private boolean droppedMagmaCream = true;
 	private boolean forestsInPlains = false;
 	private boolean hillBiomes = true;
 	private TaigaType taigaType = TaigaType.SNOWY_AND_SLOWLESS;
