@@ -21,6 +21,10 @@ public class BiomeBuilder {
 		return this;
 	}
 
+	public BiomeBuilder climate(Biome biome) {
+		return this.climate(biome.temperature, biome.downfall);
+	}
+
 	public BiomeBuilder height(float b, float v) {
 		((BiomeInvoker) this.biome).invokeSetHeight(b, v);
 		return this;
