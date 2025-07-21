@@ -1,5 +1,7 @@
 package io.bluestaggo.tweakedadventure.mixin.block;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.block.PlantBlock;
@@ -20,7 +22,7 @@ public class SaplingBlockMixin extends PlantBlock {
 		super(id, sprite);
 	}
 
-	@Redirect(
+	@WrapOperation(
 		method = "grow",
 		at = @At(
 			value = "INVOKE",
@@ -28,11 +30,11 @@ public class SaplingBlockMixin extends PlantBlock {
 		)
 	)
 	private boolean growSwamp(Feature feature, World world, Random random, int x, int y, int z,
-							  @Local(ordinal = 3) int type) {
+							  Operation<Boolean> original, @Local(ordinal = 3) int type) {
 		if (type == 0 && TweakedAdventureConfig.getInstance().growableSwampTrees()
 				&& world.getBiomeSource().getBiome(x, z) == Biome.SWAMPLAND) {
 			feature = new SwampTreeFeature();
 		}
-		return feature.place(world, random, x, y, z);
+		return original.call(feature, world, random, x, y, z);
 	}
 }

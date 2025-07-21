@@ -1,10 +1,12 @@
 package io.bluestaggo.tweakedadventure.mixin.block;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.block.Block;
 import net.minecraft.block.BookshelfBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
@@ -21,13 +23,17 @@ public abstract class BookshelfBlockMixin extends Block {
 		return Item.BOOK.id;
 	}
 
-	@ModifyConstant(
+	@ModifyExpressionValue(
 		method = "getBaseDropCount",
-		constant = @Constant(
-			intValue = 0
+		at = @At(
+			value = "CONSTANT",
+			args = "intValue=0"
 		)
 	)
-	public int getBaseDropCount(int constant) {
-		return 3;
+	public int getBaseDropCount(int original) {
+		if (original == 0) {
+			original = 3;
+		}
+		return original;
 	}
 }
