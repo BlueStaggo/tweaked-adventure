@@ -1,9 +1,12 @@
 package io.bluestaggo.tweakedadventure.mixin.enchantment;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentCategory;
 import net.minecraft.enchantment.BetterLootEnchantment;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
@@ -13,23 +16,31 @@ public abstract class BetterLootEnchantmentMixin extends Enchantment {
 		super(id, type, category);
 	}
 
-	@ModifyConstant(
+	@ModifyExpressionValue(
 		method = "getMinXpRequirement",
-		constant = @Constant(
-			intValue = 20
+		at = @At(
+			value = "CONSTANT",
+			args = "intValue=20"
 		)
 	)
-	private int getMinXpRequirementR13_1(int constant) {
+	private int getMinXpRequirementR13_1(int original) {
+		if (!TweakedAdventureConfig.getInstance().lowerXpRequirement()) {
+			return original;
+		}
 		return 15;
 	}
 
-	@ModifyConstant(
+	@ModifyExpressionValue(
 		method = "getMinXpRequirement",
-		constant = @Constant(
-			intValue = 12
+		at = @At(
+			value = "CONSTANT",
+			args = "intValue=12"
 		)
 	)
-	private int getMinXpRequirementR13_2(int constant) {
+	private int getMinXpRequirementR13_2(int original) {
+		if (!TweakedAdventureConfig.getInstance().lowerXpRequirement()) {
+			return original;
+		}
 		return 9;
 	}
 }

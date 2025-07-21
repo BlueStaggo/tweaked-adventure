@@ -3,7 +3,7 @@ package io.bluestaggo.tweakedadventure.worldgen;
 import io.bluestaggo.tweakedadventure.mixin.worldgen.BiomeInvoker;
 import net.minecraft.world.biome.Biome;
 
-class BiomeBuilder {
+public class BiomeBuilder {
 	public Biome biome;
 
 	public BiomeBuilder name(String name) {
@@ -19,6 +19,10 @@ class BiomeBuilder {
 	public BiomeBuilder climate(float t, float d) {
 		((BiomeInvoker) this.biome).invokeSetTemperatureAndDownfall(t, d);
 		return this;
+	}
+
+	public BiomeBuilder climate(Biome biome) {
+		return this.climate(biome.temperature, biome.downfall);
 	}
 
 	public BiomeBuilder height(float b, float v) {

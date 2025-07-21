@@ -17,11 +17,16 @@ public class TweakedAdventureBiomes {
 
 	static {
 		BiomeBuilder biomeBuilder = new BiomeBuilder();
+		TweakedAdventureConfig.BiomeHeightType biomeHeightType = TweakedAdventureConfig.getInstance().biomeHeightType();
 
+		biomeBuilder.biome = Biome.OCEAN;
+		biomeHeightType.applyOceanHeight(biomeBuilder);
+		biomeBuilder.biome = Biome.FROZEN_OCEAN;
+		biomeHeightType.applyOceanHeight(biomeBuilder);
 		biomeBuilder.biome = Biome.EXTREME_HILLS;
-		biomeBuilder.height(0.2f, 1.8f);
+		biomeHeightType.applyExtremeHillsHeight(biomeBuilder);
 		biomeBuilder.biome = Biome.ICE_MOUNTAINS;
-		biomeBuilder.height(0.2f, 1.8f);
+		biomeHeightType.applyIceMountainsHeight(biomeBuilder);
 
 		switch (TweakedAdventureConfig.getInstance().taigaType()) {
 			case SNOWY:
@@ -44,11 +49,11 @@ public class TweakedAdventureBiomes {
 
 		if (TweakedAdventureConfig.getInstance().hillBiomes()) {
 			biomeBuilder.biome = DESERT_HILLS = Biome.DESERT_HILLS;
-			biomeBuilder.height(0.3f, 0.8f);
+			biomeHeightType.applyHillsHeight(biomeBuilder);
 			biomeBuilder.biome = FOREST_HILLS = Biome.FOREST_HILLS;
-			biomeBuilder.height(0.3f, 0.7f);
+			biomeHeightType.applyForestHillsHeight(biomeBuilder);
 			biomeBuilder.biome = TAIGA_HILLS = Biome.TAIGA_HILLS;
-			biomeBuilder.height(0.3f, 0.8f);
+			biomeHeightType.applyHillsHeight(biomeBuilder);
 
 			switch (TweakedAdventureConfig.getInstance().taigaType()) {
 				case SNOWY:
@@ -57,7 +62,8 @@ public class TweakedAdventureBiomes {
 
 				case SNOWY_AND_SLOWLESS:
 					biomeBuilder.biome = SNOWY_TAIGA_HILLS = new TaigaBiome(getNextID());
-					biomeBuilder.color(5159473).name("Snowy TaigaHills").climate(0.05f, 0.8f).height(0.3f, 0.8f).enableSnow();
+					biomeBuilder.color(5159473).name("Snowy TaigaHills").climate(0.05f, 0.8f).enableSnow();
+					biomeHeightType.applyHillsHeight(biomeBuilder);
 					biomeBuilder.biome = Biome.TAIGA_HILLS;
 					biomeBuilder.climate(0.3f, 0.8f).disableSnow();
 					break;
