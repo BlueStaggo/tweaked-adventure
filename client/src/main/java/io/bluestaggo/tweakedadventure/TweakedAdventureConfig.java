@@ -30,7 +30,7 @@ public class TweakedAdventureConfig {
 	private boolean pigmenDropPorkchops = true;
 	private boolean growableSwampTrees = true;
 	private boolean murkySwamps = true;
-	private ExperienceBarType experienceBarType = ExperienceBarType.NONE;
+	private ExperienceBarType experienceBarType = ExperienceBarType.BAR_AND_LEVELS;
 	private BiomeHeightType biomeHeightType = BiomeHeightType.HYBRID;
 
 	public boolean modernExhaustion() {
