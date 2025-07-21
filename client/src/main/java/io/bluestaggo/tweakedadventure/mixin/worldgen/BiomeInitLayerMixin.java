@@ -24,7 +24,7 @@ public abstract class BiomeInitLayerMixin extends Layer {
 	)
 	private Biome addSnowyTaiga() {
 		if (TweakedAdventureConfig.getInstance().taigaType() != TweakedAdventureConfig.TaigaType.SNOWLESS
-				&& this.nextInt(6) == 0) {
+				&& this.nextInt(7) == 0) {
 			return TweakedAdventureBiomes.SNOWY_TAIGA;
 		}
 		return Biome.ICE_PLAINS;

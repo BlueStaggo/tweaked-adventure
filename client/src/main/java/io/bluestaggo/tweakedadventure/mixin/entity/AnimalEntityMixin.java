@@ -2,6 +2,7 @@ package io.bluestaggo.tweakedadventure.mixin.entity;
 
 import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.entity.living.mob.PathAwareEntity;
+import net.minecraft.entity.living.mob.passive.PassiveEntity;
 import net.minecraft.entity.living.mob.passive.animal.AnimalEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -11,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AnimalEntity.class)
-public abstract class AnimalEntityMixin extends PathAwareEntity {
+public abstract class AnimalEntityMixin extends PassiveEntity {
 	public AnimalEntityMixin(World world) {
 		super(world);
 	}

@@ -32,6 +32,8 @@ public class AddHillsLayer extends AddDeepOceanLayer {
 						outputBiome = TweakedAdventureBiomes.SNOWY_TAIGA_HILLS.id;
 					} else if (inputBiome == Biome.ICE_PLAINS.id) {
 						outputBiome = Biome.ICE_MOUNTAINS.id;
+					} else if (inputBiome == Biome.JUNGLE.id) {
+						outputBiome = Biome.JUNGLE_HILLS.id;
 					} else if (inputBiome == Biome.PLAINS.id && TweakedAdventureConfig.getInstance().forestsInPlains()) {
 						outputBiome = Biome.FOREST.id;
 					}

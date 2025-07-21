@@ -35,9 +35,9 @@ public abstract class SwampBiomeMixin extends Biome {
 		at = @At("HEAD"),
 		cancellable = true
 	)
-	private void getPureGrassColor(WorldView world, int x, int y, int z, CallbackInfoReturnable<Integer> cir) {
+	private void getPureGrassColor(CallbackInfoReturnable<Integer> cir) {
 		if (!TweakedAdventureConfig.getInstance().murkySwamps()) {
-			cir.setReturnValue(super.getGrassColor(world, x, y, z));
+			cir.setReturnValue(super.getGrassColor());
 		}
 	}
 
@@ -46,9 +46,9 @@ public abstract class SwampBiomeMixin extends Biome {
 		at = @At("HEAD"),
 		cancellable = true
 	)
-	private void getPureFoliageColor(WorldView world, int x, int y, int z, CallbackInfoReturnable<Integer> cir) {
+	private void getPureFoliageColor(CallbackInfoReturnable<Integer> cir) {
 		if (!TweakedAdventureConfig.getInstance().murkySwamps()) {
-			cir.setReturnValue(super.getFoliageColor(world, x, y, z));
+			cir.setReturnValue(super.getFoliageColor());
 		}
 	}
 }
