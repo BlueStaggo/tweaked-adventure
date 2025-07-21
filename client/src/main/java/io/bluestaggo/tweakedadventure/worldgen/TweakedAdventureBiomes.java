@@ -47,13 +47,13 @@ public class TweakedAdventureBiomes {
 
 		if (TweakedAdventureConfig.getInstance().hillBiomes()) {
 			biomeBuilder.biome = DESERT_HILLS = new DesertBiome(getNextID());
-			biomeBuilder.color(13786898).name("DesertHills").disableRain().climate(2.0f, 0.0f);
+			biomeBuilder.color(13786898).name("DesertHills").disableRain().climate(Biome.DESERT);
 			biomeHeightType.applyHillsHeight(biomeBuilder);
 			biomeBuilder.biome = FOREST_HILLS = new ForestBiome(getNextID());
-			biomeBuilder.color(2250012).name("ForestHills").climate(0.7f, 0.8f);
+			biomeBuilder.color(2250012).name("ForestHills").climate(Biome.FOREST);
 			biomeHeightType.applyForestHillsHeight(biomeBuilder);
 			biomeBuilder.biome = TAIGA_HILLS = new TaigaBiome(getNextID());
-			biomeBuilder.color(5159473).name("TaigaHills").climate(0.2f, 0.8f);
+			biomeBuilder.color(5159473).name("TaigaHills").climate(Biome.TAIGA);
 			biomeHeightType.applyHillsHeight(biomeBuilder);
 
 			switch (TweakedAdventureConfig.getInstance().taigaType()) {
