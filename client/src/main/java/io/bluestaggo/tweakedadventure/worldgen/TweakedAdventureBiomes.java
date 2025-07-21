@@ -44,7 +44,7 @@ public class TweakedAdventureBiomes {
 	}
 
 	private static int getNextID(int borrowId) {
-		if (borrowId >= 0 && Biome.BY_ID[borrowId] != null) {
+		if (borrowId >= 0 && Biome.BY_ID[borrowId] == null) {
 			return borrowId;
 		}
 
