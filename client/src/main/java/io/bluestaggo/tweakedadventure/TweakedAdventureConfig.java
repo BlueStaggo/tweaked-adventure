@@ -16,6 +16,7 @@ public class TweakedAdventureConfig {
 	private boolean lowerXpRequirement = true;
 	private boolean higherOres = true;
 	private boolean cheaperRecipes = true;
+	private boolean moreStackables = true;
 	private boolean nightmares = false;
 	private boolean droppedMagmaCream = true;
 	private boolean forestsInPlains = false;
@@ -48,6 +49,10 @@ public class TweakedAdventureConfig {
 
 	public boolean cheaperRecipes() {
 		return cheaperRecipes;
+	}
+
+	public boolean moreStackables() {
+		return moreStackables;
 	}
 
 	public boolean nightmares() {
