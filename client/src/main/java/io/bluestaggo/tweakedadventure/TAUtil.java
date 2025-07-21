@@ -1,5 +1,8 @@
 package io.bluestaggo.tweakedadventure;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+
 import java.util.function.IntFunction;
 
 public final class TAUtil {
@@ -11,5 +14,15 @@ public final class TAUtil {
 		System.arraycopy(a, 0, c, 0, a.length);
 		System.arraycopy(b, 0, c, a.length, b.length);
 		return c;
+	}
+
+	public static boolean canBlockBeReplacedBySnow(int id, boolean allowAir) {
+		Block block = Block.BY_ID[id];
+		if (block == null) {
+			return allowAir;
+		}
+
+		Material material = block.material;
+		return !material.blocksMovement() && !material.isLiquid();
 	}
 }
