@@ -16,7 +16,6 @@ public class TweakedAdventureConfig {
 	private boolean lowerXpRequirement = true;
 	private boolean higherOres = true;
 	private boolean cheaperRecipes = true;
-	private boolean nightmares = false;
 	private boolean droppedMagmaCream = true;
 	private boolean forestsInPlains = false;
 	private boolean hillBiomes = true;
@@ -48,10 +47,6 @@ public class TweakedAdventureConfig {
 
 	public boolean cheaperRecipes() {
 		return cheaperRecipes;
-	}
-
-	public boolean nightmares() {
-		return nightmares;
 	}
 
 	public boolean droppedMagmaCream() {
