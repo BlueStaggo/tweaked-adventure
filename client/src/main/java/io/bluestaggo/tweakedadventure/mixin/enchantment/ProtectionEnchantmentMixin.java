@@ -1,5 +1,6 @@
 package io.bluestaggo.tweakedadventure.mixin.enchantment;
 
+import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentCategory;
 import net.minecraft.enchantment.ProtectionEnchantment;
@@ -23,6 +24,8 @@ public abstract class ProtectionEnchantmentMixin extends Enchantment {
 		at = @At("TAIL")
 	)
 	private static void clinitR13(CallbackInfo ci) {
-		XP_MODIFIER[0] = 11;
+		if (TweakedAdventureConfig.getInstance().lowerXpRequirement()) {
+			XP_MODIFIER[0] = 11;
+		}
 	}
 }

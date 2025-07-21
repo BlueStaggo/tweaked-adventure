@@ -1,5 +1,6 @@
 package io.bluestaggo.tweakedadventure.mixin;
 
+import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.block.Block;
 import net.minecraft.crafting.CraftingManager;
 import net.minecraft.item.ItemStack;
@@ -16,8 +17,15 @@ public abstract class CraftingManagerMixin {
 		ordinal = 0
 	)
 	private ItemStack modifyShaped(ItemStack item) {
+		if (!TweakedAdventureConfig.getInstance().cheaperRecipes()) {
+			return item;
+		}
+
 		if (item.itemId == Block.STONE_SLAB.id && item.size == 3) {
 			item.size = 6;
+		}
+		if (item.itemId == Block.LADDER.id && item.size == 1) {
+			item.size = 3;
 		}
 		return item;
 	}
