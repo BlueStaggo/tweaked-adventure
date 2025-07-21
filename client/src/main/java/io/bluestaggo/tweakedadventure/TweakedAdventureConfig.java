@@ -16,8 +16,7 @@ public class TweakedAdventureConfig {
 	private boolean lowerXpRequirement = true;
 	private boolean higherOres = true;
 	private boolean cheaperRecipes = true;
-	private boolean droppedMagmaCream = true;
-	private boolean forestsInPlains = false;
+	private boolean forestsInPlains = true;
 	private boolean hillBiomes = true;
 	private TaigaType taigaType = TaigaType.SNOWY_AND_SLOWLESS;
 	private boolean releaseArmor = true;
@@ -47,10 +46,6 @@ public class TweakedAdventureConfig {
 
 	public boolean cheaperRecipes() {
 		return cheaperRecipes;
-	}
-
-	public boolean droppedMagmaCream() {
-		return droppedMagmaCream;
 	}
 
 	public boolean forestsInPlains() {
