@@ -1,5 +1,6 @@
 package io.bluestaggo.tweakedadventure.mixin.worldgen;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.biome.Biome;
@@ -17,15 +18,16 @@ public abstract class SwampBiomeMixin extends Biome {
 		super(id);
 	}
 
-	@ModifyConstant(
+	@ModifyExpressionValue(
 		method = "<init>",
-		constant = @Constant(
-			intValue = 14745456
+		at = @At(
+			value = "CONSTANT",
+			args = "intValue=14745456"
 		)
 	)
-	private int restoreWaterColor(int constant) {
+	private int restoreWaterColor(int original) {
 		if (TweakedAdventureConfig.getInstance().murkySwamps()) {
-			return constant;
+			return original;
 		}
 		return 0xFFFFFF;
 	}
