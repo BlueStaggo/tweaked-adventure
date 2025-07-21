@@ -1,5 +1,6 @@
 package io.bluestaggo.tweakedadventure.mixin.block;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.PaneBlock;
@@ -12,20 +13,18 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(PaneBlock.class)
 public abstract class PaneBlockMixin extends Block {
-	@Shadow @Final private boolean hasDrops;
-
 	private PaneBlockMixin(int id, Material material) {
 		super(id, material);
 	}
 
-	@Redirect(
+	@ModifyExpressionValue(
 		method = "getDropItem",
 		at = @At(
 			value = "FIELD",
 			target = "Lnet/minecraft/block/PaneBlock;hasDrops:Z"
 		)
 	)
-	private boolean modifyGlassPaneDrops(PaneBlock instance) {
-		return this.hasDrops || TweakedAdventureConfig.getInstance().dropPanes();
+	private boolean modifyGlassPaneDrops(boolean original) {
+		return original || TweakedAdventureConfig.getInstance().dropPanes();
 	}
 }
