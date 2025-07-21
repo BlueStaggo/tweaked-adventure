@@ -92,19 +92,4 @@ public class GameGuiMixin extends GuiElement {
 		}
 		return original;
 	}
-
-	@Inject(
-		method = "render",
-		at = @At(
-			value = "CONSTANT",
-			args = "stringValue=Seed: ",
-			shift = At.Shift.AFTER
-		)
-	)
-	private void renderBiome(float tickDelta, boolean screenOpen, int mouseX, int mouseY, CallbackInfo ci) {
-		int playerX = MathHelper.floor(this.minecraft.player.x);
-		int playerZ = MathHelper.floor(this.minecraft.player.z);
-		Biome biome = this.minecraft.world.getBiomeSource().getBiome(playerX, playerZ);
-		this.drawString(this.minecraft.textRenderer, "Biome: " + biome.name, 2, 112, 14737632);
-	}
 }
