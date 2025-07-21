@@ -17,6 +17,7 @@
     "block.StairsBlockMixin",
     "entity.AnimalEntityMixin",
     "entity.DamageSourceMixin",
+    "entity.EndermanEntityMixin",
     "entity.MagmaCubeEntityMixin",
     "entity.PigEntityMixin",
     "entity.StatusEffectMixin",
@@ -34,6 +35,7 @@
     "worldgen.BiomeInvoker",
     "worldgen.LargeOakTreeFeatureMixin",
     "worldgen.LayerMixin",
+    "worldgen.OverworldChunkGeneratorMixin",
     "worldgen.RiverMixLayerMixin",
     "worldgen.SwampBiomeMixin",
     "worldgen.VeinFeatureMixin"
