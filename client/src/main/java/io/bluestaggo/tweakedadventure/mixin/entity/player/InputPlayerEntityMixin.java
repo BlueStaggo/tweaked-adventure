@@ -1,5 +1,6 @@
 package io.bluestaggo.tweakedadventure.mixin.entity.player;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.client.entity.living.player.InputPlayerEntity;
 import net.minecraft.entity.living.player.PlayerEntity;
 import net.minecraft.world.World;
@@ -16,17 +17,18 @@ public abstract class InputPlayerEntityMixin extends PlayerEntity {
 		super(world);
 	}
 
-	@ModifyConstant(
+	@ModifyExpressionValue(
 		method = "setSprinting",
-		constant = @Constant(
-			intValue = 600
+		at = @At(
+			value = "CONSTANT",
+			args = "intValue=600"
 		)
 	)
 	private int setInfiniteSprinting(int constant) {
 		return Integer.MAX_VALUE;
 	}
 
-	@Redirect(
+	@ModifyExpressionValue(
 		method = "tickAi",
 		at = @At(
 			value = "FIELD",
@@ -35,7 +37,7 @@ public abstract class InputPlayerEntityMixin extends PlayerEntity {
 			ordinal = 0
 		)
 	)
-	private boolean flySprinting(InputPlayerEntity player) {
-		return player.onGround || player.abilities.flying;
+	private boolean flySprinting(boolean original) {
+		return original || this.abilities.flying;
 	}
 }

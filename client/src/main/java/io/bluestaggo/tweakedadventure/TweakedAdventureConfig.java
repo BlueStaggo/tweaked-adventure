@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
+import io.bluestaggo.tweakedadventure.worldgen.BiomeBuilder;
 import net.minecraft.client.Minecraft;
 
 import java.io.*;
@@ -11,6 +12,11 @@ import java.io.*;
 public class TweakedAdventureConfig {
 	private static TweakedAdventureConfig instance = new TweakedAdventureConfig();
 
+	private boolean modernExhaustion = true;
+	private boolean lowerXpRequirement = true;
+	private boolean higherOres = true;
+	private boolean cheaperRecipes = true;
+	private boolean nightmares = false;
 	private boolean forestsInPlains = false;
 	private boolean hillBiomes = true;
 	private TaigaType taigaType = TaigaType.SNOWY_AND_SLOWLESS;
@@ -23,8 +29,29 @@ public class TweakedAdventureConfig {
 	private boolean dropPanes = false;
 	private boolean pigmenDropPorkchops = true;
 	private boolean growableSwampTrees = true;
-	private boolean murkySwamps = false;
+	private boolean murkySwamps = true;
 	private ExperienceBarType experienceBarType = ExperienceBarType.NONE;
+	private BiomeHeightType biomeHeightType = BiomeHeightType.HYBRID;
+
+	public boolean modernExhaustion() {
+		return modernExhaustion;
+	}
+
+	public boolean lowerXpRequirement() {
+		return lowerXpRequirement;
+	}
+
+	public boolean higherOres() {
+		return higherOres;
+	}
+
+	public boolean cheaperRecipes() {
+		return cheaperRecipes;
+	}
+
+	public boolean nightmares() {
+		return nightmares;
+	}
 
 	public boolean forestsInPlains() {
 		return forestsInPlains;
@@ -82,6 +109,10 @@ public class TweakedAdventureConfig {
 		return experienceBarType;
 	}
 
+	public BiomeHeightType biomeHeightType() {
+		return biomeHeightType;
+	}
+
 	public static TweakedAdventureConfig getInstance() {
 		return instance;
 	}
@@ -100,6 +131,70 @@ public class TweakedAdventureConfig {
 		@SerializedName("snowless") SNOWLESS,
 		@SerializedName("snowy") SNOWY,
 		@SerializedName("snowyAndSnowless") SNOWY_AND_SLOWLESS
+	}
+
+	public enum BiomeHeightType {
+		@SerializedName("b1.8") BETA_1_8,
+		@SerializedName("r1.1") RELEASE_1_1,
+		@SerializedName("r1.3") RELEASE_1_3,
+		@SerializedName("hybrid") HYBRID;
+
+		public void applyOceanHeight(BiomeBuilder biomeBuilder) {
+			switch (this) {
+				case BETA_1_8:
+					biomeBuilder.height(-1.0f, 0.5f);
+				case RELEASE_1_1:
+				case RELEASE_1_3:
+				case HYBRID:
+					biomeBuilder.height(-1.0f, 0.4f);
+			}
+		}
+
+		public void applyExtremeHillsHeight(BiomeBuilder biomeBuilder) {
+			switch (this) {
+				case BETA_1_8:
+				case HYBRID:
+					biomeBuilder.height(0.2f, 1.8f);
+				case RELEASE_1_1:
+					biomeBuilder.height(0.2f, 1.3f);
+				case RELEASE_1_3:
+					biomeBuilder.height(0.3f, 1.5f);
+			}
+		}
+
+		public void applyIceMountainsHeight(BiomeBuilder biomeBuilder) {
+			switch (this) {
+				case BETA_1_8:
+				case HYBRID:
+					biomeBuilder.height(0.2f, 1.8f);
+				case RELEASE_1_1:
+					biomeBuilder.height(0.2f, 1.2f);
+				case RELEASE_1_3:
+					biomeBuilder.height(0.3f, 1.3f);
+			}
+		}
+
+		public void applyHillsHeight(BiomeBuilder biomeBuilder) {
+			switch (this) {
+				case BETA_1_8:
+				case HYBRID:
+				case RELEASE_1_3:
+					biomeBuilder.height(0.3f, 0.8f);
+				case RELEASE_1_1:
+					biomeBuilder.height(0.2f, 0.7f);
+			}
+		}
+
+		public void applyForestHillsHeight(BiomeBuilder biomeBuilder) {
+			switch (this) {
+				case BETA_1_8:
+				case HYBRID:
+				case RELEASE_1_3:
+					biomeBuilder.height(0.3f, 0.7f);
+				case RELEASE_1_1:
+					biomeBuilder.height(0.2f, 0.6f);
+			}
+		}
 	}
 
 	static {

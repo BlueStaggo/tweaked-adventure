@@ -17,6 +17,16 @@ public class TweakedAdventureBiomes {
 
 	static {
 		BiomeBuilder biomeBuilder = new BiomeBuilder();
+		TweakedAdventureConfig.BiomeHeightType biomeHeightType = TweakedAdventureConfig.getInstance().biomeHeightType();
+
+		biomeBuilder.biome = Biome.OCEAN;
+		biomeHeightType.applyOceanHeight(biomeBuilder);
+		biomeBuilder.biome = Biome.FROZEN_OCEAN;
+		biomeHeightType.applyOceanHeight(biomeBuilder);
+		biomeBuilder.biome = Biome.EXTREME_HILLS;
+		biomeHeightType.applyExtremeHillsHeight(biomeBuilder);
+		biomeBuilder.biome = Biome.ICE_MOUNTAINS;
+		biomeHeightType.applyIceMountainsHeight(biomeBuilder);
 
 		switch (TweakedAdventureConfig.getInstance().taigaType()) {
 			case SNOWY:
@@ -37,11 +47,14 @@ public class TweakedAdventureBiomes {
 
 		if (TweakedAdventureConfig.getInstance().hillBiomes()) {
 			biomeBuilder.biome = DESERT_HILLS = new DesertBiome(getNextID());
-			biomeBuilder.color(13786898).name("DesertHills").disableRain().climate(2.0f, 0.0f).height(0.3f, 0.8f);
+			biomeBuilder.color(13786898).name("DesertHills").disableRain().climate(2.0f, 0.0f);
+			biomeHeightType.applyHillsHeight(biomeBuilder);
 			biomeBuilder.biome = FOREST_HILLS = new ForestBiome(getNextID());
-			biomeBuilder.color(2250012).name("ForestHills").climate(0.7f, 0.8f).height(0.3f, 0.7f);
+			biomeBuilder.color(2250012).name("ForestHills").climate(0.7f, 0.8f);
+			biomeHeightType.applyForestHillsHeight(biomeBuilder);
 			biomeBuilder.biome = TAIGA_HILLS = new TaigaBiome(getNextID());
-			biomeBuilder.color(5159473).name("TaigaHills").climate(0.3f, 0.8f).height(0.3f, 0.8f);
+			biomeBuilder.color(5159473).name("TaigaHills").climate(0.2f, 0.8f);
+			biomeHeightType.applyHillsHeight(biomeBuilder);
 
 			switch (TweakedAdventureConfig.getInstance().taigaType()) {
 				case SNOWY:
@@ -51,7 +64,8 @@ public class TweakedAdventureBiomes {
 
 				case SNOWY_AND_SLOWLESS:
 					biomeBuilder.biome = SNOWY_TAIGA_HILLS = new TaigaBiome(getNextID());
-					biomeBuilder.color(5159473).name("Snowy TaigaHills").climate(0.05f, 0.8f).height(0.3f, 0.8f).enableSnow();
+					biomeBuilder.color(5159473).name("Snowy TaigaHills").climate(0.05f, 0.8f).enableSnow();
+					biomeHeightType.applyHillsHeight(biomeBuilder);
 					break;
 
 				default:
