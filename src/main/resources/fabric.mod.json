@@ -3,7 +3,7 @@
 	"id": "tweaked_adventure",
 	"version": "${version}",
 	"name": "Tweaked Adventure",
-	"description": "A few QOL fixes and world gen tweaks for Beta 1.8 - 1.0.0",
+	"description": "A few QOL fixes and world gen tweaks for early release Minecraft",
 	"authors": [
 		"BlueStaggo"
 	],

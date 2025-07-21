@@ -32,6 +32,8 @@ public abstract class NaturalSpawnerMixin {
 		cancellable = true
 	)
 	private static void stopNightmares(World world, List players, CallbackInfoReturnable<Boolean> cir) {
-		cir.setReturnValue(false);
+		if (!TweakedAdventureConfig.getInstance().nightmares()) {
+			cir.setReturnValue(false);
+		}
 	}
 }

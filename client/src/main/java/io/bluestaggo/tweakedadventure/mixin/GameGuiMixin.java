@@ -1,5 +1,8 @@
 package io.bluestaggo.tweakedadventure.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.client.Minecraft;
@@ -20,18 +23,18 @@ import static io.bluestaggo.tweakedadventure.TweakedAdventureConfig.ExperienceBa
 public class GameGuiMixin extends GuiElement {
 	@Shadow private Minecraft minecraft;
 
-	@Redirect(
+	@WrapOperation(
 		method = "render",
 		at = @At(
 			value = "INVOKE",
 			target = "Lnet/minecraft/client/entity/living/player/InputPlayerEntity;getNextLevelExperience()I"
 		)
 	)
-	private int hideExperienceBar(InputPlayerEntity player) {
+	private int hideExperienceBar(InputPlayerEntity instance, Operation<Integer> original) {
 		if (TweakedAdventureConfig.getInstance().experienceBarType() == TweakedAdventureConfig.ExperienceBarType.NONE) {
 			return 0;
 		}
-		return player.getNextLevelExperience();
+		return original.call(instance);
 	}
 
 	@Inject(
@@ -75,18 +78,19 @@ public class GameGuiMixin extends GuiElement {
 		}
 	}
 
-	@ModifyConstant(
+	@ModifyExpressionValue(
 		method = "render",
-		constant = @Constant(
-			intValue = 39,
+		at = @At(
+			value = "CONSTANT",
+			args = "intValue=39",
 			ordinal = 0
 		)
 	)
-	private int modifyExperienceBarShift(int constant) {
+	private int modifyExperienceBarShift(int original) {
 		if (TweakedAdventureConfig.getInstance().experienceBarType() == ExperienceBarType.NONE) {
-			constant -= 7;
+			original -= 7;
 		}
-		return constant;
+		return original;
 	}
 
 	@Inject(

@@ -1,5 +1,8 @@
 package io.bluestaggo.tweakedadventure.mixin.entity.player;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.entity.Entity;
@@ -7,6 +10,7 @@ import net.minecraft.entity.living.LivingEntity;
 import net.minecraft.entity.living.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.world.World;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.*;
@@ -21,47 +25,63 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 		super(world);
 	}
 
-	@ModifyConstant(
+	@ModifyExpressionValue(
 		method = "attack",
-		constant = @Constant(
-			floatValue = 0.3f
+		at = @At(
+			value = "CONSTANT",
+			args = "floatValue=0.3"
 		)
 	)
-	private float reduceAttackExhaustion(float constant) {
+	private float reduceAttackExhaustion(float original) {
+		if (!TweakedAdventureConfig.getInstance().modernExhaustion()) {
+			return original;
+		}
 		return 0.1f;
 	}
 
-	@ModifyConstant(
+	@ModifyExpressionValue(
 		method = "jump",
-		constant = @Constant(
-			floatValue = 0.2f
+		at = @At(
+			value = "CONSTANT",
+			args = "floatValue=0.2"
 		)
 	)
-	private float reduceJumpExhaustion(float constant) {
+	private float reduceJumpExhaustion(float original) {
+		if (!TweakedAdventureConfig.getInstance().modernExhaustion()) {
+			return original;
+		}
 		return 0.05f;
 	}
 
-	@ModifyConstant(
+	@ModifyExpressionValue(
 		method = "jump",
-		constant = @Constant(
-			floatValue = 0.8f
+		at = @At(
+			value = "CONSTANT",
+			args = "floatValue=0.8"
 		)
 	)
-	private float reduceSprintJumpExhaustion(float constant) {
+	private float reduceSprintJumpExhaustion(float original) {
+		if (!TweakedAdventureConfig.getInstance().modernExhaustion()) {
+			return original;
+		}
 		return 0.2f;
 	}
 
-	@ModifyConstant(
+	@ModifyExpressionValue(
 		method = "tickNonRidingMovementRelatedStats",
-		constant = @Constant(
-			floatValue = 0.015f
+		at = @At(
+			value = "CONSTANT",
+			args = "floatValue=0.015"
 		)
 	)
-	private float reduceSwimmingExhaustion(float constant) {
+	private float reduceSwimmingExhaustion(float original) {
+		if (!TweakedAdventureConfig.getInstance().modernExhaustion()) {
+			return original;
+		}
 		return 0.01f;
 	}
 
-	@Redirect(
+	@WrapOperation(
 		method = "tickNonRidingMovementRelatedStats",
 		at = @At(
 			value = "INVOKE",
@@ -69,13 +89,17 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 			ordinal = 3
 		)
 	)
-	private void removeWalkingExhaustion(PlayerEntity instance, float v) {
+	private void removeWalkingExhaustion(PlayerEntity instance, float amount, Operation<Void> original) {
+		if (!TweakedAdventureConfig.getInstance().modernExhaustion()) {
+			original.call(instance, amount);
+		}
 	}
 
-	@ModifyConstant(
+	@ModifyExpressionValue(
 		method = "attack",
-		constant = @Constant(
-			floatValue = 0.5f
+		at = @At(
+			value = "CONSTANT",
+			args = "floatValue=0.5"
 		)
 	)
 	private float reduceKnockback(float constant) {
@@ -106,6 +130,10 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 		cancellable = true
 	)
 	private void getNextLevelExperienceR13(CallbackInfoReturnable<Integer> cir) {
+		if (!TweakedAdventureConfig.getInstance().lowerXpRequirement()) {
+			return;
+		}
+
 		if (this.xpLevel >= 30) {
 			cir.setReturnValue(62 + (this.xpLevel - 30) * 7);
 		} else if (this.xpLevel >= 15) {
@@ -115,17 +143,18 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 		}
 	}
 
-	@ModifyConstant(
+	@ModifyExpressionValue(
 		method = "moveEntityWithVelocity",
-		constant = @Constant(
-			floatValue = 0.05f
+		at = @At(
+			value = "CONSTANT",
+			args = "floatValue=0.05"
 		)
 	)
-	private float moveSprintFlying(float constant) {
+	private float moveSprintFlying(float original) {
 		if (this.isSprinting()) {
-			constant *= 2.5f;
+			original *= 2.5f;
 		}
-		return constant;
+		return original;
 	}
 
 	@ModifyConstant(
