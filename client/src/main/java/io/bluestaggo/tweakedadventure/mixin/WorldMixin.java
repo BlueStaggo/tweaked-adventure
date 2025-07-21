@@ -5,8 +5,8 @@ import io.bluestaggo.tweakedadventure.TweakedAdventureConfig;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(World.class)
 public abstract class WorldMixin {
@@ -22,5 +22,17 @@ public abstract class WorldMixin {
 			return 1L;
 		}
 		return constant;
+	}
+
+	@Inject(
+		method = "canSnowFall",
+		at = @At(
+			value = "RETURN",
+			ordinal = 2
+		),
+		cancellable = true
+	)
+	private void fixSnowCheck(int x, int y, int z, CallbackInfoReturnable<Boolean> cir) {
+		cir.setReturnValue(false);
 	}
 }
