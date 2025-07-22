@@ -35,6 +35,7 @@ public abstract class OverworldChunkGeneratorMixin implements ChunkSource {
 				y--;
 				newLayer = true;
 			}
+
 			if (newLayer && original.call(world, x, y, z)) {
 				world.setBlock(x, y, z, Block.ICE.id);
 			}
@@ -65,19 +66,35 @@ public abstract class OverworldChunkGeneratorMixin implements ChunkSource {
 				newLayer = true;
 			}
 
-			if (TAUtil.canBlockBeReplacedBySnow(world.getBlock(x, y, z), false)) {
-				world.setBlock(x, y, z, 0);
-			}
+			if (newLayer) {
+				int prevBlock = world.getBlock(x, y, z);
+				int prevMeta = 0;
 
-			if (newLayer && original.call(world, x, y, z)) {
-				world.setBlock(x, y, z, Block.SNOW_LAYER.id);
+				if (TAUtil.canBlockBeReplacedBySnow(prevBlock, false)) {
+					prevMeta = world.getBlockMetadata(x, y, z);
+					world.setBlockQuietly(x, y, z, 0);
+				}
+
+				if (original.call(world, x, y, z)) {
+					world.setBlock(x, y, z, Block.SNOW_LAYER.id);
+				} else {
+					world.setBlockWithMetadataQuietly(x, y, z, prevBlock, prevMeta);
+				}
 			}
 		}
 
-		if (TAUtil.canBlockBeReplacedBySnow(world.getBlock(x, originalY, z), false)) {
-			world.setBlock(x, originalY, z, 0);
+		int prevBlock = world.getBlock(x, y, z);
+		int prevMeta = 0;
+
+		if (TAUtil.canBlockBeReplacedBySnow(prevBlock, false)) {
+			prevMeta = world.getBlockMetadata(x, y, z);
+			world.setBlockQuietly(x, originalY, z, 0);
 		}
 
-		return original.call(world, x, originalY, z);
+		boolean placeSnow = original.call(world, x, originalY, z);
+		if (!placeSnow) {
+			world.setBlockWithMetadataQuietly(x, y, z, prevBlock, prevMeta);
+		}
+		return placeSnow;
 	}
 }
