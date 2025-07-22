@@ -83,17 +83,17 @@ public abstract class OverworldChunkGeneratorMixin implements ChunkSource {
 			}
 		}
 
-		int prevBlock = world.getBlock(x, y, z);
+		int prevBlock = world.getBlock(x, originalY, z);
 		int prevMeta = 0;
 
 		if (TAUtil.canBlockBeReplacedBySnow(prevBlock, false)) {
-			prevMeta = world.getBlockMetadata(x, y, z);
+			prevMeta = world.getBlockMetadata(x, originalY, z);
 			world.setBlockQuietly(x, originalY, z, 0);
 		}
 
 		boolean placeSnow = original.call(world, x, originalY, z);
 		if (!placeSnow) {
-			world.setBlockWithMetadataQuietly(x, y, z, prevBlock, prevMeta);
+			world.setBlockWithMetadataQuietly(x, originalY, z, prevBlock, prevMeta);
 		}
 		return placeSnow;
 	}
