@@ -20,6 +20,6 @@ public abstract class LanguageManagerMixin {
 		)
 	)
 	private void addCustomLanguageEntries(String language, CallbackInfo ci, @Local Properties translations) {
-		translations.put("generator.default_1_1", "Release 1.1");
+		translations.put("generator.default_1_1", "Default 1.1");
 	}
 }
